@@ -1,16 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: #111;
-  color: #eee;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #05051e;
+  color: #e4e4f0;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
-  max-width: 640px;
+  max-width: 620px;
   margin: 0 auto;
-  padding: 48px 20px;
+  padding: 64px 24px;
 }
 
 .watch-container {
@@ -19,124 +23,150 @@ body {
 
 header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   letter-spacing: -0.5px;
+  color: #fff;
 }
 
 .tagline {
-  color: #888;
-  margin-top: 6px;
+  color: #7a7a9b;
+  margin-top: 8px;
   font-size: 1rem;
+  font-weight: 400;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #bbb;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #a0a0c0;
+  letter-spacing: 0.01em;
 }
 
 .optional {
   font-weight: 400;
-  color: #666;
+  color: #55557a;
 }
 
 input[type="text"] {
-  padding: 12px 14px;
-  border-radius: 8px;
-  border: 1px solid #333;
-  background: #1a1a1a;
-  color: #eee;
-  font-size: 1rem;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e4e4f0;
+  font-family: inherit;
+  font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
 }
 
 input[type="text"]:focus {
-  border-color: #555;
+  border-color: rgba(55, 92, 255, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(55, 92, 255, 0.1);
+}
+
+input[type="text"][readonly] {
+  color: #7a7a9b;
+  cursor: text;
 }
 
 button[type="submit"] {
   margin-top: 8px;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 14px 20px;
+  border-radius: 10px;
   border: none;
-  background: #e44;
+  background: linear-gradient(135deg, #375cff 0%, #5a3cff 100%);
   color: #fff;
-  font-size: 1rem;
+  font-family: inherit;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: opacity 0.2s, transform 0.1s;
+  letter-spacing: 0.01em;
 }
 
 button[type="submit"]:hover {
-  background: #c33;
+  opacity: 0.9;
+}
+
+button[type="submit"]:active {
+  transform: scale(0.98);
 }
 
 .result {
-  margin-top: 28px;
-  padding: 20px;
-  border-radius: 8px;
+  margin-top: 32px;
+  padding: 24px;
+  border-radius: 12px;
 }
 
 .result.success {
-  background: #1a2a1a;
-  border: 1px solid #2a4a2a;
+  background: rgba(55, 200, 130, 0.06);
+  border: 1px solid rgba(55, 200, 130, 0.15);
 }
 
 .result.error {
-  background: #2a1a1a;
-  border: 1px solid #4a2a2a;
-  color: #f88;
+  background: rgba(255, 80, 80, 0.06);
+  border: 1px solid rgba(255, 80, 80, 0.15);
+  color: #ff8888;
 }
 
 .result p {
-  margin-bottom: 12px;
-  color: #aaa;
+  margin-bottom: 14px;
+  color: #7a7a9b;
   font-size: 0.9rem;
 }
 
 .link-box {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: #111;
-  padding: 10px 14px;
-  border-radius: 6px;
-  border: 1px solid #333;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .link-box a {
   flex: 1;
-  color: #6cf;
+  color: #6b9fff;
   text-decoration: none;
   word-break: break-all;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.link-box a:hover {
+  color: #93b8ff;
 }
 
 .link-box button {
-  padding: 6px 14px;
-  border-radius: 6px;
-  border: 1px solid #444;
-  background: #222;
-  color: #ccc;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.06);
+  color: #c0c0d8;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
   white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .link-box button:hover {
-  background: #333;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* Watch page */
@@ -146,12 +176,14 @@ button[type="submit"]:hover {
 
 .back-link {
   display: inline-block;
-  color: #666;
+  color: #55557a;
   text-decoration: none;
   font-size: 0.85rem;
+  font-weight: 500;
   margin-bottom: 8px;
+  transition: color 0.2s;
 }
 
 .back-link:hover {
-  color: #999;
+  color: #8888b0;
 }

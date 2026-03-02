@@ -32,8 +32,9 @@ export function watchPage(videoId: string, label?: string) {
       margin: 0 auto;
       aspect-ratio: 16 / 9;
       background: #000;
-      border-radius: 8px;
+      border-radius: 12px;
       overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
     .player-wrap iframe {
       position: absolute;
@@ -72,16 +73,17 @@ export function watchPage(videoId: string, label?: string) {
       width: 72px;
       height: 72px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.1);
-      border: 2px solid rgba(255,255,255,0.3);
+      background: rgba(55, 92, 255, 0.15);
+      border: 2px solid rgba(55, 92, 255, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s, border-color 0.2s;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
     }
     .pre-overlay:hover .play-icon {
-      background: rgba(255,255,255,0.15);
-      border-color: rgba(255,255,255,0.5);
+      background: rgba(55, 92, 255, 0.25);
+      border-color: rgba(55, 92, 255, 0.6);
+      transform: scale(1.05);
     }
     .pre-overlay .play-icon svg {
       width: 32px;
@@ -89,8 +91,10 @@ export function watchPage(videoId: string, label?: string) {
       margin-left: 4px;
     }
     .pre-overlay .pre-label {
-      color: #888;
-      font-size: 0.95rem;
+      color: #7a7a9b;
+      font-size: 0.9rem;
+      font-weight: 500;
+      font-family: 'Inter', system-ui, sans-serif;
     }
     /* Layer 3: end-screen overlay */
     .end-overlay {
@@ -106,26 +110,33 @@ export function watchPage(videoId: string, label?: string) {
     }
     .end-overlay.active { display: flex; }
     .end-overlay button {
-      font-size: 1.1rem;
-      padding: 12px 32px;
-      border-radius: 8px;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.95rem;
+      padding: 14px 36px;
+      border-radius: 10px;
       border: none;
       cursor: pointer;
       font-weight: 600;
+      transition: opacity 0.2s, transform 0.1s;
     }
+    .end-overlay button:active { transform: scale(0.97); }
     .replay-btn {
-      background: #fff;
-      color: #000;
+      background: linear-gradient(135deg, #375cff 0%, #5a3cff 100%);
+      color: #fff;
     }
+    .replay-btn:hover { opacity: 0.9; }
     .end-label {
-      color: #aaa;
+      color: #7a7a9b;
       font-size: 0.9rem;
+      font-family: 'Inter', system-ui, sans-serif;
     }
     .player-label {
       text-align: center;
-      margin: 16px 0 8px;
-      font-size: 1.2rem;
-      color: #ccc;
+      margin: 16px 0 12px;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #a0a0c0;
+      font-family: 'Inter', system-ui, sans-serif;
     }
   </style>
 </head>

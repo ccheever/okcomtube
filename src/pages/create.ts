@@ -30,6 +30,10 @@ export function createPage(result?: { url: string } | { error: string }) {
       <form method="POST" action="/create">
         <label for="url">YouTube URL</label>
         <input type="text" id="url" name="url" placeholder="https://www.youtube.com/watch?v=..." required autofocus>
+        <div id="original-title-wrap" style="display:none">
+          <label for="original-title">Original title <span class="optional">(for reference)</span></label>
+          <input type="text" id="original-title" readonly style="color:#888;cursor:text;user-select:all">
+        </div>
         <label for="label">Label <span class="optional">(optional — e.g. "800m final")</span> <span id="label-status" style="color:#666;font-weight:400"></span></label>
         <input type="text" id="label" name="label" placeholder="800m final" maxlength="100">
         <button type="submit">Create spoiler-free link</button>
@@ -42,6 +46,8 @@ export function createPage(result?: { url: string } | { error: string }) {
     var urlInput = document.getElementById('url');
     var labelInput = document.getElementById('label');
     var labelStatus = document.getElementById('label-status');
+    var originalTitleWrap = document.getElementById('original-title-wrap');
+    var originalTitleInput = document.getElementById('original-title');
     var lastSuggestedUrl = '';
 
     function suggestLabel() {
@@ -59,6 +65,10 @@ export function createPage(result?: { url: string } | { error: string }) {
       .then(function(r) { return r.json(); })
       .then(function(data) {
         labelStatus.textContent = '';
+        if (data.original) {
+          originalTitleInput.value = data.original;
+          originalTitleWrap.style.display = '';
+        }
         if (data.label && !labelInput.value.trim()) {
           labelInput.value = data.label;
           labelInput.focus();

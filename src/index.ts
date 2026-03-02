@@ -86,10 +86,12 @@ app.post("/api/suggest-label", async (c) => {
         {
           role: "user",
           content: `Rewrite this YouTube video title into a short, spoiler-free label. Rules:
-- Remove ALL athlete/player/team names — just describe the event generically
 - Remove any results, outcomes, winners, scores, or placements
-- Include the event name, discipline, and year if possible
-- Format like: "Women's 1500m — USATF Indoor Championships 2026"
+- Remove individual athlete/player names UNLESS it's a head-to-head matchup (e.g. "herO vs MaxPax", "Djokovic vs Nadal"). Keep both names in vs/matchup situations since that doesn't reveal who won.
+- Similarly, keep team names in matchups (e.g. "Lakers vs Celtics")
+- For non-matchup content (race highlights, tournament recaps, etc.), remove all names and just describe the event generically
+- Include the event/tournament name, series number, discipline, and year if possible
+- Format like: "Women's 1500m — USATF Indoor Championships 2026" or "herO vs MaxPax — WardiTV Mondays #72"
 - Keep it under 60 characters
 - Return ONLY the rewritten title, nothing else
 
