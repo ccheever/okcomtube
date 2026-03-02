@@ -1,0 +1,10 @@
+name = "okcomtube"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+[assets]
+directory = "./public"
+
+[[kv_namespaces]]
+binding = "LINKS"
+id = "d4a51faf87c3405795c585e42ede5444"

@@ -1,0 +1,22 @@
+{
+  "name": "okcomtube",
+  "module": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "start": "bun src/index.ts"
+  },
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260301.1",
+    "@types/bun": "latest",
+    "wrangler": "^4.69.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "hono": "^4.12.3"
+  }
+}
