@@ -54,7 +54,6 @@ export function watchPage(videoId: string, label?: string) {
       opacity: 1;
       transition: opacity 0.3s;
     }
-    .title-cover.hidden { opacity: 0; pointer-events: none; }
     /* Layer 1: pre-play overlay — hides thumbnail completely */
     .pre-overlay {
       position: absolute;
@@ -166,28 +165,8 @@ export function watchPage(videoId: string, label?: string) {
   <script>
     var player;
     var preOverlay = document.getElementById('pre-overlay');
-    var titleCover = document.getElementById('title-cover');
     var endOverlay = document.getElementById('end-overlay');
-    var playerWrap = document.getElementById('player-wrap');
-    var hideTimer = null;
-    var isPlaying = false;
     var hasStarted = false;
-
-    // Title cover is visible by default. Only hide it during active playback
-    // when the mouse is away (YouTube hides its title bar then too).
-    playerWrap.addEventListener('mouseenter', function() {
-      if (hasStarted) {
-        titleCover.classList.remove('hidden');
-        clearTimeout(hideTimer);
-      }
-    });
-    playerWrap.addEventListener('mouseleave', function() {
-      if (isPlaying) {
-        hideTimer = setTimeout(function() {
-          titleCover.classList.add('hidden');
-        }, 300);
-      }
-    });
 
     // Load YouTube IFrame API
     var tag = document.createElement('script');
@@ -222,23 +201,13 @@ export function watchPage(videoId: string, label?: string) {
     function onStateChange(event) {
       switch (event.data) {
         case YT.PlayerState.PLAYING:
-          isPlaying = true;
           preOverlay.classList.add('hidden');
           endOverlay.classList.remove('active');
-          // Hide title cover after a few seconds of playback
-          hideTimer = setTimeout(function() {
-            titleCover.classList.add('hidden');
-          }, 3000);
           break;
         case YT.PlayerState.PAUSED:
-          isPlaying = false;
-          // YouTube shows title when paused — make sure we're covering it
-          titleCover.classList.remove('hidden');
           break;
         case YT.PlayerState.ENDED:
-          isPlaying = false;
           endOverlay.classList.add('active');
-          titleCover.classList.add('hidden');
           break;
       }
     }
